@@ -7,7 +7,7 @@ MAINTAINER LiuKai <liukai.tci@gmail.com>
 RUN sed -i 's/docker-php-\(ext-$ext.ini\)/\1/' /usr/local/bin/docker-php-ext-install
 
 # Install other needed extensions
-RUN apt-get update && apt-get install -y libfreetype6 libjpeg62-turbo libmcrypt4 libpng12-0 sendmail libcurl4-openssl-dev libcurl4-nss-dev libcurl4-gnutls-dev --no-install-recommends && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y libfreetype6 libjpeg62-turbo libmcrypt4 libpng12-0 sendmail --no-install-recommends && rm -rf /var/lib/apt/lists/*
 RUN buildDeps=" \
 		libfreetype6-dev \
 		libjpeg-dev \
@@ -28,7 +28,6 @@ RUN buildDeps=" \
 	&& docker-php-ext-install mysqli \
 	&& docker-php-ext-install pdo_mysql \
 	&& docker-php-ext-install zip \
-	&& docker-php-ext-install curl \
 	&& apt-get purge -y --auto-remove $buildDeps \
 	&& cd /usr/src/php \
 	&& make clean
