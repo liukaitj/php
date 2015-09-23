@@ -40,9 +40,9 @@ RUN curl -sS https://getcomposer.org/installer | php \
 RUN cat /usr/src/php/php.ini-production | sed 's/^;\(date.timezone.*\)/\1 \"PRC\"/' > /usr/local/etc/php/php.ini
 
 # Close Magic quotes
-RUN echo 'magic_quotes_gpc = Off' > /usr/local/etc/php/php.ini
-RUN echo 'magic_quotes_runtime = Off' > /usr/local/etc/php/php.ini
-RUN echo 'magic_quotes_sybase = Off' > /usr/local/etc/php/php.ini
+RUN echo 'magic_quotes_gpc = Off' >> /usr/local/etc/php/php.ini
+RUN echo 'magic_quotes_runtime = Off' >> /usr/local/etc/php/php.ini
+RUN echo 'magic_quotes_sybase = Off' >> /usr/local/etc/php/php.ini
 
 # Disable cgi.fix_pathinfo in php.ini
 # RUN sed -i 's/;\(cgi\.fix_pathinfo=\)1/\10/' /usr/local/etc/php/php.ini
